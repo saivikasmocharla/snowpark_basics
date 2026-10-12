@@ -4,14 +4,15 @@ from snowflake.snowpark import Session
 from snowflake.snowpark.functions import col
 
 
-connection_parameters = {"account":"ijvunnh-ny22848",
-"user":"pradeep",
-"password": "AbcdAbcdAbcd067$",
+connection_parameters = {"account":"iivhvcb-dp48049",
+"user":"vikas",
+"password": "GlobeTrotter@1",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",
 "schema":"PUBLIC"
 }
+
 
 session = Session.builder.configs(connection_parameters).create()
 session.sql("USE WAREHOUSE COMPUTE_WH").collect()

@@ -5,9 +5,9 @@ import time
 from snowflake.snowpark.types import IntegerType, StringType, StructField, StructType, DateType
 
 # Replace the below connection_parameters with your respective snowflake account,user name and password
-connection_parameters = {"account":"ijvunnh-ny22848",
-"user":"pradeep",
-"password": "AbcdAbcdAbcd067$",
+connection_parameters = {"account":"iivhvcb-dp48049",
+"user":"vikas",
+"password": "GlobeTrotter@1",
 "role":"ACCOUNTADMIN",
 "warehouse":"COMPUTE_WH",
 "database":"DEMO_DB",
@@ -18,7 +18,7 @@ session = Session.builder.configs(connection_parameters).create()
 
 import pandas as pd
 
-test = session.create_dataframe(pd.DataFrame([(1, 2, 3, 4,5)], columns=["a", "b", "c", "d","e"]))
+test = session.create_dataframe(pd.DataFrame([(1, 2, 3, 4,5,6)], columns=["a", "b", "c", "d","e", "f"]))
 
 test.show()
 

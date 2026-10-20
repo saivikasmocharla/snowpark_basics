@@ -59,4 +59,73 @@ test1.show()
 end = time.time()
 print(f"Total runtime of the program is {end - begin}")
 
+#============================= 
 
+#practice creating a dataframe with schema
+data = [
+    ("C101", "Sai", 5000),
+    ("C102", "Ram", 8000),
+    ("C103", "Ravi", 3000)
+]
+
+df = session.create_dataframe(
+    data,
+    schema=["CLAIM_ID", "MEMBER_NAME", "CLAIM_AMOUNT"]
+)
+
+df.show()
+
+
+data = [
+    ("C101", 5000),
+    ("C102", 8000),
+    ("C103", 3000)
+]
+
+df = session.create_dataframe(
+    data,
+    schema=["CLAIM_ID", "CLAIM_AMOUNT"]
+)
+
+df.print_schema()
+
+df.show()
+
+#=============================
+
+
+data1 = [
+    ("C101", "Sai", 5000),
+    ("C102", "Ram", 8000),
+    ("C103", "Ravi", 3000)
+]
+
+df = session.create_dataframe(
+    data1,
+    schema=["CLAIM_ID", "MEMBER_NAME", "CLAIM_AMOUNT"]
+)
+
+df.write.save_as_table("PRACTICE_CLAIMS")
+
+df.show()
+#========================================
+
+data = [
+    ("C101", "M101", "apollo hospital", 5000),
+    ("C102", "M102", "city care", 12000),
+    ("C103", "M103", "medplus", -500),
+    ("C104", "M101", "apollo hospital", 8000),
+    ("C105", "M104", "city care", 15000)
+]
+
+df = session.create_dataframe(
+    data,
+    schema=[
+        "CLAIM_ID",
+        "MEMBER_ID",
+        "PROVIDER_NAME",
+        "CLAIM_AMOUNT"
+    ]
+)
+
+df.show()

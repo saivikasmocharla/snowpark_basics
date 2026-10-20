@@ -17,13 +17,14 @@ This guide covers the complete setup needed to connect to Snowflake from VS Code
 
 1. Download Python from:
    https://www.python.org/downloads/windows/
+   Use Python 3.11, which is supported by Snowflake and avoids the Python 3.8 end-of-life warning.
 2. During installation, check the option:
    - Add Python to PATH
 3. Finish the installation.
 4. Verify Python is available:
 
 ```powershell
-py --version
+py -3.11 --version
 ```
 
 If it prints a version number, Python is installed correctly.
@@ -43,19 +44,22 @@ Then open that folder in VS Code:
 
 ---
 
-## 4. Install Snowpark
+## 4. Create a Python environment and install Snowpark
 
-Open the VS Code terminal and run:
+From the project folder, create an isolated Python 3.11 environment and install Snowpark:
 
 ```powershell
-py -m pip install snowflake-snowpark-python
+py -3.11 -m venv .venv-snowpark311
+.\.venv-snowpark311\Scripts\python.exe -m pip install snowflake-snowpark-python
 ```
 
 Verify the package is available:
 
 ```powershell
-py -c "import snowflake.snowpark; print('Snowpark installed successfully')"
+.\.venv-snowpark311\Scripts\python.exe -c "import snowflake.snowpark; print('Snowpark installed successfully')"
 ```
+
+VS Code is configured to use this environment by default. If it still shows the old interpreter, use **Python: Select Interpreter** and choose `.venv-snowpark311`.
 
 ---
 
@@ -96,13 +100,13 @@ In the VS Code terminal, use:
 
 ```powershell
 cd "D:\Snowpark\snowpark_basics"
-& "C:\Users\HP\AppData\Local\Programs\Python\Python313\python.exe" "D:\Snowpark\snowpark_basics\1_Connection_test.py"
+& ".\.venv-snowpark311\Scripts\python.exe" ".\1_Connection_test.py"
 ```
 
-If your Python launcher works correctly, this also works:
+Or use the Python launcher after installing Snowpark into that interpreter:
 
 ```powershell
-py 1_Connection_test.py
+.\.venv-snowpark311\Scripts\python.exe .\1_Connection_test.py
 ```
 
 ---
@@ -126,23 +130,23 @@ This confirms that Snowflake connection succeeded and the session is active.
 Fix:
 
 ```powershell
-py -m pip install snowflake-snowpark-python
+.\.venv-snowpark311\Scripts\python.exe -m pip install snowflake-snowpark-python
 ```
 
 ---
 
 ### Problem: `Python was not found`
 
-Use the Python launcher:
+Use the Python launcher with the supported version:
 
 ```powershell
-py --version
+py -3.11 --version
 ```
 
 Then run:
 
 ```powershell
-py 1_Connection_test.py
+.\.venv-snowpark311\Scripts\python.exe .\1_Connection_test.py
 ```
 
 ---
